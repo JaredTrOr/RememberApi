@@ -1,0 +1,167 @@
+@import url(elementos.css);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--roboto);
+}
+
+body{
+    background-color: var(--fondo);
+    /* height: 1000vh; */
+}
+
+.nav-item a{
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--negro);
+}
+
+/*NAVBAR--------------------------------------*/
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: var(--fondo);
+}
+
+.navbar-brand img{
+    width: 80px;
+}
+
+/*PARTE 1--------------------------------------*/
+
+.container-1{
+    margin-top: 7rem;
+}
+
+.boton-azul{
+    background-color: var(--boton-azul);
+    color: var(--blanco);
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.boton-azul:hover{
+    background-color: var(--azul-elefante);
+    color: var(--blanco);
+    transform: scale(1.2);
+}
+
+.imagen-nota img{
+    width: 85%;
+}
+
+.titulo-nota h1{
+    font-size: 90px;
+    font-weight: bold;
+    font-family: var(--josefin);
+}
+
+.titulo-nota p{
+    text-align: justify;
+    margin: 2rem 0;
+}
+
+.fila-1{
+    margin-top: 5rem;
+}
+
+.primera-fila{
+    background-image: url(../images/index/icono-fondo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+/*SEGUNDA PARTE---------------------------------*/
+.segunda-fila, .tercera-fila{
+    margin: 7rem 0;
+    background-image: url(../images/index/icono-fondo.png);
+    background-position: center;
+    background-size: contain;
+}
+
+.texto-segunda-fila h1{
+    font-size: 70px;
+    font-weight: bold;
+    font-family: var(--josefin);
+}
+
+.imagen-segunda-fila img{
+    border-radius: 30px;
+    width: 90%;
+    height: 17rem;
+}
+
+/*TERCERA PARTE---------------------------------*/
+.texto-tercera-fila h1{
+    font-size: 70px;
+    font-weight: bold;
+    font-family: var(--josefin);
+}
+
+.tercera-fila .col-12{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-tercera-fila img{
+    border-radius: 10px;
+    width: 80%;
+}
+
+
+/*FOOTER----------------------------------------*/
+footer{
+    background-color: var(--azul-elefante-ligth);
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+}
+
+footer h6{
+    font-weight: bold;
+}
+
+/*MEDIA QUERIES-----------------------------*/
+@media(max-width: 990px){
+    .titulo-nota{
+        text-align: center;
+    }   
+
+    .titulo-nota p{
+        text-align: center;
+    }
+
+    /*SEGUNDA PARTE*/
+    .texto-segunda-fila{
+        text-align: center;
+    }
+
+    .imagen-segunda-fila{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+}
+
+@media(max-width: 590px){
+    .titulo-nota h1{
+        font-size: 60px;
+    }
+
+    .texto-segunda-fila h1,.texto-tercera-fila h1{
+        font-size: 50px;
+    }
+    
+}
+
+

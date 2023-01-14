@@ -1,0 +1,49 @@
+@import url(elementos.css);
+@import url(index.css);
+
+.imagen-nota{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.imagen-nota img{
+    width: 75%;
+}
+
+.imagen-nota{
+    padding: 3rem 0;
+}
+
+.tercera-fila img{
+    width: 100%;
+}
+
+.valores{
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valores h1{
+    font-family: var(--josefin);
+    font-weight: bold;
+}
+
+@media(max-width: 590px){
+    .titulo-nota h1{
+        font-size: 50px;
+    }
+
+    .texto-segunda-fila h1,.texto-tercera-fila h1{
+        font-size: 30px;
+    }
+    
+}
+ 
+
+
+
+

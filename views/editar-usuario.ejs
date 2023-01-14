@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Remember - Editar Usuario</title>
+        <!--ESTILOS-->
+        <link rel="shortcut icon" href="/../static/images/logoV.png" type="image/x-icon">
+        <link rel="stylesheet" href="../../static/css/notes.css">
+    </head>
+    <body>
+        <!--Editar Perfil---------------------------------------------------------------->
+        <div class="update-form-container container activated" id="update-form-container">
+            <div class="form-container-inner" style="background-color: white; width: 50%; padding: 15px; border-radius: 10px">
+                <form action="../editar-usuario-administrador" id="userForm" method="post" class="form" style="color:black;">
+                    <input class="form-input" name="admin" type="text" hidden="true" value="admin">
+                    <input class="form-input" name="id" type="text" hidden="true" value="<%=administrador[0].id%>">
+                    <p class="instruction">Usuario:</p>
+                    <input class="form-input" name="usuario" type="text" value="<%=administrador[0].usuario%>">
+                    <p class="instruction">Email:</p>
+                    <input class="form-input" name="email" type="email" value="<%=administrador[0].email%>">
+                    <p class="instruction">Nombre:</p>
+                    <input class="form-input" name="nombre" type="text" value="<%=administrador[0].nombre%>">
+                    <p class="instruction">Password:</p>
+                    <input class="form-input" type="text" name="password" value="<%=administrador[0].password%>">
+                    <div style="display: flex; justify-content: space-around;">
+                        <input type="radio" name="rol" checked id="Admin" value="1">
+                        <label for="Admin">Administrador</label>
+                        <input type="radio" name="rol" id="User" value="2">
+                        <label for="User">Usuario</label>
+                    </div>
+                    <div class="action-btns-container">
+                        <button class="btn btn-modificar btn-transacciones-usuario" type="submit" id="modify">Modificar Cuenta</button>
+                    </div>
+                    <a href="/usuario/administrador" class="btn form-input" style="display: block;">Volver</a>
+                </form>
+            </div>
+    </body>
+</html>

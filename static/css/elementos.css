@@ -1,0 +1,19 @@
+:root{
+    
+    /*Colores*/
+    --azul-elefante-ligth:#B1DAFF;
+    --azul-elefante: #77ABDA;
+    --boton-azul: #00C3FF;
+    --nota-azul: #DBFAFF;
+    --texto: #707070;
+    --blanco: #ffff;
+    --negro: black;
+    --fondo: #F5F5F5;
+    --transparente: transparent;
+
+    /*Fuentes*/
+    --josefin: 'Josefin Sans', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+    --roboto: 'Roboto', sans-serif;
+    --consolas: 'consolas';
+}

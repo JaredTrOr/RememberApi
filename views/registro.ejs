@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!--META TAGS-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Remember">
+        <meta name="copyright" content="Remember">
+        <meta name="description" content="Pantalla de registro"> 
+        <meta name="keywords" content="Registro, Notas, Remember">
+
+        <!--FUENTES-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+        <!--BOOTSTRAP-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+        <!--ESTILOS GENERALES-->
+        <link rel="shortcut icon" href="../../static/images/logoV.png" type="image/x-icon">
+        <link rel="stylesheet" href="../../static/css/sign.css">
+        <title>Remember - Iniciar sesión</title>
+    </head>
+    <body>
+
+        <!--REGISTRARSE-->
+        <div class="fondo">
+            <div class="contenido">
+                <a id="back-button" href="/">&lt;</a>
+                <div class="imagen">
+                    <img src="../static/images/index/Logo.png" id="logo" alt="">
+                    <%if(mensaje!=null){%>
+                        <span class="siVisible" id="spanMensaje"><%=mensaje%></span>
+                    <%}%>
+                </div>
+                <div class="formulario">
+                    <form action="/usuario/registro" method="post" name="myForm" onsubmit="return validate();">
+                        <div id="form-container">
+                            <div class="flex-column">
+                                <input type="text" placeholder="Nombre(s)" name="nombre" id="Nombre">
+                                <span class="noVisible" id="spanNombre">Ingrese su nombre(s)</span>
+
+                                <input type="text" placeholder="Usuario" name="usuario" id="Usuario">
+                                <span class="noVisible" id="spanUsuario">Ingrese un usuario</span>
+
+                                <input type="email" placeholder="Dirección Email" name="email" id="Email">
+                                <span class="noVisible" id="spanEmail">Ingrese su email</span>
+
+                                <input type="password" placeholder="Crea una contraseña" name="password" id="Password">
+                                <span class="noVisible" id="spanPassword">Ingrese su contraseña</span>
+                                <input class="button" type="submit" value="Comenzar"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="../static/js/sign.js"></script>
+    </body>
+</html>

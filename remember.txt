@@ -1,0 +1,18 @@
+PÁGINAS ESTÁTICAS/DINÁMICAS:----------------------------------------------------------
+/index.ejs - ABRE LA PANTALLA PRINCIPAL
+/acerca-de.ejs - ABRE EL ACERCA DE
+/iniciar.ejs - ABRE LA PANTALLA DEL INICIO DE SESIÓN
+/registro.ejs - ABRE LA PANTALLA DEL REGISTRO
+
+REFERENCIAS DINÁMICAS POR EL MOMENTO:--------------------------------------------------
+USUARIO: 
+/usuario/registro: POST - HACE EL REGISTRO
+/usuario/inicio: POST     - HACE EL LOGIN
+/usuario/notas: GET - REEDIRECCIONA A PÁGINA DE NOTAS
+/usuario/administrador: GET - REEDIRECCIONA A ADMINISTRADOR
+
+ADMINISTRADOR------------------------------------------------------------------------
+/notas/operacion-notas: PUT - Hace las operaciones relacionadas con las notas
+
+
+

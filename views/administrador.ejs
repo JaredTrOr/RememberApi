@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Remember Team">
+        <meta name="copyright" content="Remember">
+        <meta name="description" content="Interfaz de administración de usuarios">
+        <meta name="keywords" content="Administrador, notas, Remember">
+        <link rel="shortcut icon" href="../static/images/logoV.png" type="image/x-icon">
+        <title>Remember - Administrador</title>
+        <link rel="stylesheet" href="../static/css/administrador.css">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="notes">
+
+            <!--SIDEBAR-------------------------------------------------->
+            <div class="notes__sidebar">
+                <div class="user">
+                    <div class="user-avatar"></div>
+                    <div id="nickname">
+                        <p id="nomber_usuario"><%=administrador.nombre%></p>
+                    </div>
+                </div>
+                <div class="tools">
+                    <button class="closeIcon">
+                        <i class="ri-close-line"></i>
+                    </button>
+                    <div class="tool">
+                        <a id="updateUser">
+                            <i class="ri-user-line"></i>
+                            <p class="tool-name">Ver perfil</p>
+                        </a>
+                    </div>
+                    <div class="tool">
+                        <a href="/usuario/insertar-usuario" >
+                            <i class="ri-add-line"></i>
+                            <p class="tool-name">Añadir usuario</p>
+                        </a>
+                    </div>
+                    <div class="tool">
+                        <a href="/usuario/notas?admin=true">
+                            <i class="ri-booklet-line"></i>
+                            <p class="tool-name">Ver notas</p>
+                        </a>
+                    </div>
+                    <div class="tool">
+                        <a href="/iniciar-sesion">
+                            <i class="ri-logout-box-line"></i>
+                            <p class="tool-name">Cerrar sesión</p>
+                        </a>
+                    </div>
+                </div>
+                <button class="hamburger menuIcon">
+                    <i class="ri-menu-line"></i>
+                </button>
+                <!-- <div class="widget">
+                    <div class="fecha">
+                        <p id="diaSemana" class="diaSemana"></p>
+                        <p id="dia" class="dia"></p>
+                        <p>de </p>
+                        <p id="mes" class="mes"></p>
+                        <p>del </p>
+                        <p id="year" class="year"></p>
+                    </div>
+                    <div class="reloj">
+                        <p id="horas" class="horas"></p>
+                        <p>:</p>
+                        <p id="minutos" class="minutos"></p>
+                        <p>:</p>
+                        <div class="caja-segundos">
+                            <p class="ampm" id="ampm"></p>
+                            <p class="segundos" id="segundos"></p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!--EDITAR PERFIL---------------------------------------------->
+            <div class="update-form-container container" id="update-form-container">
+                <div class="form-container-inner" style="background-color: white; width: 50%; padding: 15px; border-radius: 10px" enctype="multipart/form-data">
+                    <form action="/usuario/modificar-administrador" id="userForm" method="post" class="form" style="color:black;">
+                        <p class="instruction">Foto:</p>                        
+                        <input type="file" id="myfile" class="subir-archivo" name="myfile">
+                        <input class="form-input" name="id" type="text" hidden="true" value="<%=administrador.id%>" id="txtId">
+                        <p class="instruction">Usuario:</p>
+                        <input class="form-input" name="usuario" type="text" value="<%=administrador.usuario%>">
+                        <p class="instruction">Email:</p>
+                        <input class="form-input" name="email" type="email" value="<%=administrador.email%>">
+                        <p class="instruction">Nombre:</p>
+                        <input class="form-input" name="nombre" type="text" value="<%=administrador.nombre%>">
+                        <p class="instruction">Password:</p>
+                        <input class="form-input" type="text" name="password" value="<%=administrador.password%>">
+                        <div class="action-btns-container">
+                            <button class="btn btn-modificar btn-transacciones-usuario"  type="submit">Modificar Cuenta</button>
+
+                            <a class="btn btn-baja-usuarios btn-transacciones-usuario" href="/usuario/borrar-usuario/<%=administrador.id%>">Darse de baja</a>
+                            
+                            <a class="btn btn-borrar btn-transacciones-usuario" href="/usuario/borrar-usuario/<%=administrador.id%>">Eliminar Cuenta</a>
+                        </div>
+                    </form>
+                </div>
+
+                <button class="btn form-close-btn place-items-center" id="update-close-btn">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+
+            <!--TABLAS---------------------------------------------------->
+            <div id="app-admin">
+                <div class="administrator">
+                    <div class="table-container">
+                       
+                        <h1>Usuarios</h1>
+                        <br>
+                        <div class="table-scroll">
+                            <table class="content-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>USUARIO</th>
+                                        <th>E-MAIL</th>
+                                        <th>CONTRASEÑA</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <%let tabla = tablaUsuarios;%>
+                                    <%for(let i = 0; i<tabla.length; i++){%>
+                                        <!--data-href="/api/administrador/editarUsuario"-->
+                                        <tr>
+                                            <td><%= tabla[i].id%></td>
+                                            <td><%= tabla[i].nombre%></td>
+                                            <td><%= tabla[i].usuario%></td>
+                                            <td><%= tabla[i].email%></td>
+                                            <td><%= tabla[i].password%></td>
+                                            <td>
+                                                <a href="editar-usuario/<%=tabla[i].id%>" class="btn-editar btn-acciones">
+                                                    <i class="ri-pencil-line"></i>
+                                                    Editar
+                                                </a>
+                                                <a href="borrar-usuario-administrador?id=<%=tabla[i].id%>&baja=1" class="btn-baja-usuarios btn-acciones">
+                                                    <i class="ri-subtract-line"></i>
+                                                    Baja
+                                                </a>
+                                                <a href="borrar-usuario-administrador?id=<%=tabla[i].id%>&baja=0" class="btn-borrar-usuarios btn-acciones">
+                                                    <i class="ri-delete-bin-7-line"></i>
+                                                    Borrar
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <%
+                                        }
+                                    %>
+                                </tbody>
+                            </table>
+
+                            <h1 class="tabla-admin">Administradores</h1>
+                            <br>
+                            <table class="content-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>USUARIO</th>
+                                        <th>E-MAIL</th>
+                                        <th>CONTRASEÑA</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <%let tablaA = tablaAdmin;%>
+                                    <%for(let i = 0; i<tablaA.length; i++){%>
+                                        <!--data-href="/api/administrador/editarUsuario"-->
+                                        <tr>
+                                            <td><%= tablaA[i].id%></td>
+                                            <td><%= tablaA[i].nombre%></td>
+                                            <td><%= tablaA[i].usuario%></td>
+                                            <td><%= tablaA[i].email%></td>
+                                            <td><%= tablaA[i].password%></td>
+                                            <td>
+                                                <a href="editar-usuario/<%=tablaA[i].id%>" class="btn-editar btn-acciones">
+                                                    <i class="ri-pencil-line"></i>
+                                                    Editar
+                                                </a>
+                                                <a href="borrar-usuario-administrador?id=<%=tablaA[i].id%>&baja=1" class="btn-baja-usuarios btn-acciones">
+                                                    <i class="ri-subtract-line"></i>
+                                                    Baja
+                                                </a>
+                                                <a href="borrar-usuario-administrador?id=<%=tablaA[i].id%>&baja=0" class="btn-borrar-usuarios btn-acciones">
+                                                    <i class="ri-delete-bin-7-line"></i>
+                                                    Borrar
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <%
+                                        }
+                                    %>
+                                </tbody>
+                            </table>
+
+                            <h1 class="tabla-admin">Bajas</h1>
+                            <br>
+                            <table class="content-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>USUARIO</th>
+                                        <th>E-MAIL</th>
+                                        <th>CONTRASEÑA</th>
+                                        <th>ROL</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <%let tablaB = tablaBajas;%>
+                                    <%for(let i = 0; i<tablaB.length; i++){%>
+                                        <!--data-href="/api/administrador/editarUsuario"-->
+                                        <tr>
+                                            <td><%= tablaB[i].id%></td>
+                                            <td><%= tablaB[i].nombre%></td>
+                                            <td><%= tablaB[i].usuario%></td>
+                                            <td><%= tablaB[i].email%></td>
+                                            <td><%= tablaB[i].password%></td>
+                                            <td><%= tablaB[i].rol%></td>
+                                            <td>
+                                                <a href="editar-usuario/<%=tablaB[i].id%>" class="btn-editar btn-acciones">
+                                                    <i class="ri-pencil-line"></i>
+                                                    Editar
+                                                </a>
+                                                <a href="restaurar-usuario-administrador?id=<%=tablaB[i].id%>" class="btn-restaurar-usuarios btn-acciones">
+                                                    <i class="ri-arrow-up-circle-line"></i>
+                                                    Restaurar
+                                                </a>
+                                                <a href="borrar-usuario-administrador?id=<%=tablaB[i].id%>&baja=0" class="btn-borrar-usuarios btn-acciones">
+                                                    <i class="ri-delete-bin-7-line"></i>
+                                                    Borrar
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <%
+                                        }
+                                    %>
+                                </tbody>
+                            </table>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../js/reloj.js"></script>
+        <script src="../static/js/notes.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const rows = document.querySelectorAll("tr[data-href]");
+                rows.forEach(row => {
+                    row.addEventListener("click", () => {
+                        window.location.href = row.dataset.href;
+                    });
+                });
+            });
+        </script>
+    </body>
+
+</html>

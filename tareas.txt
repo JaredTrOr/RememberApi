@@ -1,0 +1,10 @@
+TAREAS-----------------------------------------------------------------------------------
+
+OPCIONES---------------------------------------------------------------------------------
+-Quitar el mensaje de span del login y del registro
+-Acordion bootstrap
+-Implementar el multer
+
+BUGS------------------------------------------------------------------------------------
+-A la hora de modificar por la parte del usuario se reinician las notas idk why
+

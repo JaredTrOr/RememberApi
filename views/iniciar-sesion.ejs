@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!--META TAGS-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Remember">
+        <meta name="copyright" content="Remember">
+        <meta name="description" content="Pantalla de inicio de sesión"> 
+        <meta name="keywords" content="Inicio, Notas, Remember">
+
+        <!--FUENTES-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+        <!--BOOTSTRAP-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+        <!--ESTILOS GENERALES-->
+        <link rel="shortcut icon" href="../../static/images/logoV.png" type="image/x-icon">
+        <link rel="stylesheet" href="../static/css/login.css">
+        <title>Remember - Iniciar sesión</title>
+    </head>
+    <body>
+        <!--INICIAR SESIÓN-->
+        <div class="container">
+            <div class="row">
+                <a href="/" id="regresar">&lt;</a>
+                <div class="columna">
+                    <form action="/usuario/inicio" method="post" name="myForm" onsubmit="return validate();">      
+                        <img src="../static/images/index/Logo.png" alt="">
+                        <div class="usuario-caja">
+                            <input type="text" name="usuario" placeholder="Ingrese su usuario" id="usuario"> <br>
+                            <span class="noVisible" id="spanUsuario">Ingrese su usuario</span>
+                        </div>
+
+                        <div class="contraseña-caja">
+                            <input type="password" name="password" placeholder="Ingrese su contraseña" id="password"> <br>
+                            <span class="noVisible" id="spanPassword">Ingrese su contraseña</span>
+                        </div>
+
+                        <div class="boton-caja">
+                            <button type="submit">Ingresar</button>
+                        </div>
+
+                        <%if(mensaje!=null){%>
+                            <span class="siVisible" style="margin: auto; right: 0; left: 0; bottom: 0;" id="spanMensaje" ><%=mensaje%></span>
+                        <%}%>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../static/js/login.js"></script>
+    </body>
+</html>
